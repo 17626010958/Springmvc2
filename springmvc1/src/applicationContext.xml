@@ -51,9 +51,14 @@
 	</bean>
 	
 	<!-- 2.配置SessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactory">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"></property>
-		<property name="configLocaton" value="classpath:mybatis-config.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+	</bean>
+	
+	<!-- 扫描所有Mapper接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lpp.springmvc1"></property>
 	</bean>
 </beans>
